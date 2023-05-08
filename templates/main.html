@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="author" content="Mariusz Felisiak">
+    <meta charset="utf-8">
+    <title>Mariusz Felisiak - DRY template rendering with context processors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .version-header {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 400;
+            padding: 20px;
+        }
+        .staging-header {
+            background-color: yellow;
+            color: black;
+        }
+        .development-header {
+            background-color: green;
+            color: white;
+        }
+        .content {
+            margin-top: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    {% if environment != "production" %}
+        <div class="{{environment}}-header version-header">
+            {{environment|capfirst}} environment, version {{version}}.
+        </div>
+    {% endif %}
+    <div class="content">{% lorem %}</div>
+  </body>
+</html>
